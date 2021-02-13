@@ -1,0 +1,4 @@
+[submodule "blog"]
+	path = menu
+	url = git@github.com:treasureBear94/blog.git
+	branch = menu
