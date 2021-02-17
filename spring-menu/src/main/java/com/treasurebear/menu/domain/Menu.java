@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author yjjung
@@ -27,4 +29,6 @@ public class Menu {
 
     private int listOrder;
 
+    @OneToMany(mappedBy = "parent")
+    private List<Menu> children = new ArrayList<>();
 }
