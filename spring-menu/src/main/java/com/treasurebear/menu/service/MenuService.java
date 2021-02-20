@@ -22,7 +22,7 @@ public class MenuService {
 
     private final MenuRepository menuRepository;
 
-    public List<MenuResult> getMenus() {
+    public List<MenuResult> getV1Menus() {
         final List<Menu> all = menuRepository.findAll();
         return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
