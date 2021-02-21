@@ -3,6 +3,8 @@ package com.treasurebear.menu.repository;
 import com.treasurebear.menu.domain.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * @author yjjung
  * @version 0.1.0
@@ -10,4 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 
+    List<Menu> findAllByParentIsNull();
 }

@@ -26,4 +26,10 @@ public class MenuService {
         final List<Menu> all = menuRepository.findAll();
         return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
+
+    public List<MenuResult> getV2Menus() {
+        final List<Menu> all = menuRepository.findAllByParentIsNull();
+        return all.stream().map(MenuResult::new).collect(Collectors.toList());
+    }
+
 }

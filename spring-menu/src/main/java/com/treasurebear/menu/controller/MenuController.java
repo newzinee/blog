@@ -21,8 +21,14 @@ public class MenuController {
     private final MenuService menuService;
 
     @GetMapping("/v1/menus")
-    public ResponseEntity<List<MenuResult>> getMenus() {
+    public ResponseEntity<List<MenuResult>> getV1Menus() {
         final List<MenuResult> menus = menuService.getV1Menus();
+        return ResponseEntity.ok(menus);
+    }
+
+    @GetMapping("/v2/menus")
+    public ResponseEntity<List<MenuResult>> getV2Menus() {
+        final List<MenuResult> menus = menuService.getV2Menus();
         return ResponseEntity.ok(menus);
     }
 }
