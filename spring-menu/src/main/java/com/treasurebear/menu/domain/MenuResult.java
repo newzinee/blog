@@ -2,6 +2,7 @@ package com.treasurebear.menu.domain;
 
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,13 +19,13 @@ public class MenuResult {
 
     private int listOrder;
 
-    private List<Menu> children;
+    private List<Menu> children = new ArrayList<>();
 
     public MenuResult(final Menu menu) {
         this.id = menu.getId();
         this.name = menu.getName();
         this.listOrder = menu.getListOrder();
-        this.children = menu.getChildren();
+//        this.children = menu.getChildren();
     }
 
 }
