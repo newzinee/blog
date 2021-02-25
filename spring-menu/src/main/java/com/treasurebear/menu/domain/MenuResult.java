@@ -2,8 +2,8 @@ package com.treasurebear.menu.domain;
 
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author yjjung
@@ -19,13 +19,13 @@ public class MenuResult {
 
     private int listOrder;
 
-    private List<Menu> children = new ArrayList<>();
+    private List<MenuResult> children;
 
     public MenuResult(final Menu menu) {
         this.id = menu.getId();
         this.name = menu.getName();
         this.listOrder = menu.getListOrder();
-//        this.children = menu.getChildren();
+        this.children = menu.getChildren().stream().map(MenuResult::new).collect(Collectors.toList());
     }
 
 }
