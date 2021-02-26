@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @since 2021/02/17
  */
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MenuService {
 
