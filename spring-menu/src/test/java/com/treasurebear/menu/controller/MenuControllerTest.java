@@ -33,4 +33,11 @@ class MenuControllerTest {
                 .andDo(print());
     }
 
+    @Test
+    void getV2MenusSuccess() throws Exception {
+        mockMvc.perform(get("/v2/menus"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
 }
