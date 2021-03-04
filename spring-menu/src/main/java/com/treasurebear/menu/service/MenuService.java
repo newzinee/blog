@@ -2,6 +2,7 @@ package com.treasurebear.menu.service;
 
 import com.treasurebear.menu.domain.Menu;
 import com.treasurebear.menu.domain.MenuResult;
+import com.treasurebear.menu.domain.dto.MenuParam;
 import com.treasurebear.menu.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,15 @@ public class MenuService {
     public List<MenuResult> getV2Menus() {
         final List<Menu> all = menuRepository.findAllByParentIsNull();
         return all.stream().map(MenuResult::new).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public Long addMenu(final MenuParam param) {
+        final Menu menu = Menu.builder()
+                .name(param.getName())
+                .build();
+        final Menu savedMenu = menuRepository.save(menu);
+        return savedMenu.getId();
     }
 
 }
