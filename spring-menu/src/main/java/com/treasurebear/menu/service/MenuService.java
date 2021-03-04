@@ -4,6 +4,7 @@ import com.treasurebear.menu.domain.Menu;
 import com.treasurebear.menu.domain.MenuResult;
 import com.treasurebear.menu.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +30,11 @@ public class MenuService {
 
     public List<MenuResult> getV2Menus() {
         final List<Menu> all = menuRepository.findAllByParentIsNull();
+        return all.stream().map(MenuResult::new).collect(Collectors.toList());
+    }
+
+    public List<MenuResult> getV3Menus() {
+        final List<Menu> all = menuRepository.findAll(Sort.by(Sort.Direction.ASC, "listOrder"));
         return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
 
