@@ -1,5 +1,6 @@
 package com.treasurebear.menu.domain.dto;
 
+import com.treasurebear.menu.domain.PriorityType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,11 @@ public class MenuParam {
 
     private String name;
 
+    private String ip;
+
+    private Long userId;
+
+    private Long parentId;
+
+    private PriorityType priority;
 }
