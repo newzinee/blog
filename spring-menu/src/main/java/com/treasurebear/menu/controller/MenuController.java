@@ -37,4 +37,10 @@ public class MenuController {
         final List<MenuResult> menus = menuService.getV3Menus();
         return ResponseEntity.ok(menus);
     }
+
+    @GetMapping("/v4/menus")
+    public ResponseEntity<List<MenuResult>> getV4Menus() {
+        final List<MenuResult> menus = menuService.getV4Menus();
+        return ResponseEntity.ok(menus);
+    }
 }

@@ -38,4 +38,9 @@ public class MenuService {
         return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
 
+    public List<MenuResult> getV4Menus() {
+        final List<Menu> all = menuRepository.findAllByParentIsNull(Sort.by(Sort.Direction.ASC, "listOrder"));
+        return all.stream().map(MenuResult::new).collect(Collectors.toList());
+    }
+
 }
