@@ -43,4 +43,9 @@ public class MenuService {
         return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
 
+    public List<MenuResult> getV5Menus() {
+        final List<Menu> all = menuRepository.findAllWithJpql();
+        return all.stream().map(MenuResult::new).collect(Collectors.toList());
+    }
+
 }
