@@ -29,6 +29,7 @@ public class Menu {
 
     private int listOrder;
 
+//    @OrderBy("listOrder asc")
     @OneToMany(mappedBy = "parent")
     private List<Menu> children = new ArrayList<>();
 }
