@@ -38,15 +38,15 @@ test {
 }
 
 // querydsl 적용
-//def generated='src/main/generated'
-//sourceSets {
-//    main.java.srcDirs += [ generated ]
-//}
-//
-//tasks.withType(JavaCompile) {
-//    options.annotationProcessorGeneratedSourcesDirectory = file(generated)
-//}
-//
-//clean.doLast {
-//    file(generated).deleteDir()
-//}
+def generated='src/main/generated'
+sourceSets {
+    main.java.srcDirs += [ generated ]
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory = file(generated)
+}
+
+clean.doLast {
+    file(generated).deleteDir()
+}
