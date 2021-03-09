@@ -36,6 +36,12 @@ public class MenuController {
         return ResponseEntity.ok(menus);
     }
 
+    @GetMapping("/v3/menus")
+    public ResponseEntity<List<MenuResult>> getV3Menus() {
+        final List<MenuResult> menus = menuService.getV3Menus();
+        return ResponseEntity.ok(menus);
+    }
+
     @PostMapping("/menu")
     public ResponseEntity<Map<String, Long>> addMenu(@RequestBody MenuParam param) {
         Long id = menuService.addMenu(param);

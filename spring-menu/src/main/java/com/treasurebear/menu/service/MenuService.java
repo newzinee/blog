@@ -4,6 +4,7 @@ import com.treasurebear.menu.domain.Menu;
 import com.treasurebear.menu.domain.MenuResult;
 import com.treasurebear.menu.domain.User;
 import com.treasurebear.menu.domain.dto.MenuParam;
+import com.treasurebear.menu.repository.MenuQuerydslRepository;
 import com.treasurebear.menu.repository.MenuRepository;
 import com.treasurebear.menu.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
 public class MenuService {
 
     private final MenuRepository menuRepository;
+
+    private final MenuQuerydslRepository menuQuerydslRepository;
 
     private final UserRepository userRepository;
 
@@ -55,6 +58,11 @@ public class MenuService {
                 .build();
         final Menu savedMenu = menuRepository.save(menu);
         return savedMenu.getId();
+    }
+
+    public List<MenuResult> getV3Menus() {
+        final List<Menu> all = menuQuerydslRepository.findAllWithQuerydsl();
+        return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
 
 }
