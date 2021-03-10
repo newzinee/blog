@@ -60,12 +60,6 @@ public class MenuController {
         return ResponseEntity.ok(menus);
     }
 
-    @GetMapping("/envers/menus")
-    public ResponseEntity<List<MenuResult>> getEnversMenus() {
-        final List<MenuResult> menus = menuService.getEnversMenus();
-        return ResponseEntity.ok(menus);
-    }
-
     @PostMapping("/menu")
     public ResponseEntity<Map<String, Long>> addMenu(@RequestBody MenuParam param) {
         Long id = menuService.addMenu(param);

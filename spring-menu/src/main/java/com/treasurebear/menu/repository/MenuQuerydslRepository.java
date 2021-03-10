@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.treasurebear.menu.domain.QMenu.menu;
-
 /**
  * @author yjjung
  * @version 0.1.0

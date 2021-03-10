@@ -2,7 +2,6 @@ package com.treasurebear.menu.service;
 
 import com.treasurebear.menu.domain.Menu;
 import com.treasurebear.menu.domain.MenuResult;
-import com.treasurebear.menu.repository.MenuQuerydslRepository;
 import com.treasurebear.menu.domain.User;
 import com.treasurebear.menu.domain.dto.MenuParam;
 import com.treasurebear.menu.repository.MenuQuerydslRepository;
@@ -70,7 +69,6 @@ public class MenuService {
         final Menu parent = menuRepository.findById(param.getParentId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 Menu 입니다."));
 
-
         final Menu menu = Menu.builder()
                 .name(param.getName())
                 .ipAddress(param.getIp())
@@ -80,11 +78,6 @@ public class MenuService {
                 .build();
         final Menu savedMenu = menuRepository.save(menu);
         return savedMenu.getId();
-    }
-
-    public List<MenuResult> getEvnersMenus() {
-        final List<Menu> all = menuQuerydslRepository.findAllWithQuerydsl();
-        return all.stream().map(MenuResult::new).collect(Collectors.toList());
     }
 
 }
