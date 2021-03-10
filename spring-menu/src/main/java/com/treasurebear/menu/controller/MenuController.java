@@ -1,13 +1,17 @@
 package com.treasurebear.menu.controller;
 
 import com.treasurebear.menu.domain.MenuResult;
+import com.treasurebear.menu.domain.dto.MenuParam;
 import com.treasurebear.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yjjung
@@ -54,5 +58,17 @@ public class MenuController {
     public ResponseEntity<List<MenuResult>> getV6Menus() {
         final List<MenuResult> menus = menuService.getV6Menus();
         return ResponseEntity.ok(menus);
+    }
+
+    @GetMapping("/envers/menus")
+    public ResponseEntity<List<MenuResult>> getEnversMenus() {
+        final List<MenuResult> menus = menuService.getEnversMenus();
+        return ResponseEntity.ok(menus);
+    }
+
+    @PostMapping("/menu")
+    public ResponseEntity<Map<String, Long>> addMenu(@RequestBody MenuParam param) {
+        Long id = menuService.addMenu(param);
+        return ResponseEntity.ok().body(Map.of("id", id));
     }
 }
